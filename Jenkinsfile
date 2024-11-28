@@ -7,7 +7,7 @@ pipeline {
                     // Переходим в директорию первого приложения
                     dir('node') {
                         // Собираем Docker образ для первого приложения
-                        sh 'docker build -t yar-emiss-api .'
+                        sh '/usr/local/bin/docker build -t yar-emiss-api .'
                     }
                 }
             }
@@ -17,7 +17,7 @@ pipeline {
                 script {
                     // Запускаем контейнер для первого приложения
                     sh """
-                        docker run -d \
+                        /usr/local/bin/docker run -d \
                             --name emiss-api \
                             -p 3000:3000 \
                             -e DB_USER=postgres \
@@ -37,7 +37,7 @@ pipeline {
                     // Переходим в директорию первого приложения
                     dir('web') {
                         // Собираем Docker образ для первого приложения
-                        sh 'docker build -t yar-emiss-web .'
+                        sh '/usr/local/bin/docker build -t yar-emiss-web .'
                     }
                 }
             }
@@ -47,7 +47,7 @@ pipeline {
                 script {
                     // Запускаем контейнер для первого приложения
                     sh """
-                        docker run -d \
+                        /usr/local/bin/docker run -d \
                             --name emiss-web \
                             -p 8080:80 \
                             yar-emiss-web

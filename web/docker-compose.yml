@@ -4,4 +4,4 @@ services:
   yarkozloff-emiss-web:
     image: yarkozloff-emiss-web
     ports:
-      - 8080:80
+      - 88:80

@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  jenkins:
+    image: yar-jenkiss-emiss
+    privileged: true
+    user: root
+    ports:
+      - 8000:8080
+      - 50000:50000
+    container_name: jenkins
+    volumes:
+      - .jenkins_home:/var/jenkins_home
