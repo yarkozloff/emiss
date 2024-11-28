@@ -1,12 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
-            steps {
-                // Клонируем репозиторий
-                git 'https://github.com/yarkozloff/emiss.git'
-            }
-        }
         stage('1 Build emiss-api') {
             steps {
                 script {
