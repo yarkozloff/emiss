@@ -7,7 +7,11 @@ pipeline {
                     // Переходим в директорию первого приложения
                     dir('node') {
                         // Собираем Docker образ для первого приложения
-                        sh '/usr/local/bin/docker build -t yar-emiss-api .'
+                        sh """
+                            /usr/local/bin/docker stop emiss-api || true && \
+                            /usr/local/bin/docker rm emiss-api || true && \
+                            /usr/local/bin/docker build -t emiss-api .
+                        """
                     }
                 }
             }
@@ -25,7 +29,7 @@ pipeline {
                             -e DB_NAME=russtat \
                             -e DB_PASSWORD=postgres \
                             -e DB_PORT=5432 \
-                            yar-emiss-api
+                            yaremiss-api
                     """
                 }
             }
@@ -37,7 +41,11 @@ pipeline {
                     // Переходим в директорию первого приложения
                     dir('web') {
                         // Собираем Docker образ для первого приложения
-                        sh '/usr/local/bin/docker build -t yar-emiss-web .'
+                        sh """
+                            /usr/local/bin/docker stop emiss-web || true && \
+                            /usr/local/bin/docker rm emiss-web || true && \
+                            /usr/local/bin/docker build -t emiss-web .
+                        """
                     }
                 }
             }
@@ -50,7 +58,7 @@ pipeline {
                         /usr/local/bin/docker run -d \
                             --name emiss-web \
                             -p 8080:80 \
-                            yar-emiss-web
+                            emiss-web
                     """
                 }
             }
