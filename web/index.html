@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>My Search Project</title>
+    <link id="theme-stylesheet" rel="stylesheet" href="css/dark-theme.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/search.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <div class="menu-container">
+        <div class="menu-toggle" id="menu-toggle">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="dropdown-menu" id="dropdown-menu">
+            <div>
+            <button id="theme-toggle">Сменить тему</button>
+            <script src="js/change_theme.js"></script></div>
+            <div>
+                <button id="card-toggle">Схема данных</button></div>
+        </div>
+    </div>
+    <div class="Main">
+        
+        <script>
+            // JavaScript для управления выпадающим меню
+            const menuToggle = document.getElementById('menu-toggle');
+            const dropdownMenu = document.getElementById('dropdown-menu');
+            const cardToggle = document.getElementById('card-toggle'); // Получаем элемент card-toggle
+        
+            menuToggle.addEventListener('click', (event) => {
+                event.stopPropagation(); // Останавливаем всплытие события, чтобы клик по menuToggle не срабатывал на document
+                dropdownMenu.classList.toggle('active');
+                menuToggle.classList.toggle('active'); // Добавляем класс active к menu-toggle
+            });
+        
+            // Обработчик клика по документу
+            document.addEventListener('click', (event) => {
+                // Проверяем, находится ли клик вне dropdownMenu и menuToggle
+                if (!dropdownMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    dropdownMenu.classList.remove('active'); // Убираем класс active у dropdownMenu
+                    menuToggle.classList.remove('active'); // Убираем класс active у menuToggle
+                }
+            });
+        
+            // Обработчик клика по card-toggle
+            cardToggle.addEventListener('click', (event) => {
+                event.stopPropagation(); // Останавливаем всплытие события
+                dropdownMenu.classList.remove('active'); // Убираем класс active у dropdownMenu
+                menuToggle.classList.remove('active'); // Убираем класс active у menuToggle
+            });
+        
+        </script>
+        
+        <!-- Заголовок -->
+        <h1>Актуальность базы</h1>
+        <h1>06.11.2024</h1>
+        <div class="minifonts">Генерация данных из Единой межведомственной информационно-статистической системы</div>
+
+        <!-- Логотип ЕМИСС -->
+        <img src="img/logo_emiss.jpeg" class="mainlogo">
+
+        <!-- Форма поиска по рубрикам ведомств -->
+        <div class="class-form">
+            <div class="class-controls">
+                <input type="text" id="class-input" placeholder="Поиск по рубрике ведомства...">
+                <ul id="results-class-list" style="display: none;"></ul>
+            </div>
+        </div>         
+        
+        <!-- Форма поиска по классификатору -->
+        <div class="search-form">
+            <div class="search-controls">
+                <input type="text" id="search-input" placeholder="Поиск по классификатору...">
+                <ul id="results-codes-list" style="display: none;"></ul>
+            </div>
+        </div>
+
+        <!-- Форма поиска по полнотексту -->
+        <div class="fulltext-form">
+            <div class="fulltext-controls">
+                <input type="text" id="fulltext-input" placeholder="Поиск по всем данным ... (и/или/())">
+                <button id="fulltext-button">Искать по совпадению</button>
+            </div>
+            <div id="fultext-results" class="fultext-results"></div>
+        </div>
+        <!-- Блок с классификаторами -->
+        <div id="search-results" class="search-results">
+            <div id="result-data" class="result-data"></div>
+        </div>
+        <script src="js/switch_tabs.js"></script>
+            <!-- Таблица результатов obs -->
+        
+    </div>
+    <footer id="footer">Вернуться к началу</footer>
+    <script>
+        const footer = document.getElementById('footer');
+        const scrollThreshold = 100;
+        function checkFooterVisibility() {
+            const results = document.querySelectorAll('.dataset-result');
+            if (results.length > 4) {
+                footer.style.display = 'none';
+            }
+        }
+        function onScroll() {
+            if (window.scrollY > scrollThreshold) {
+                footer.style.display = 'block'; // Показываем футер
+            } else {
+                footer.style.display = 'none'; // Скрываем футер
+            }
+        }
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        footer.addEventListener('click', scrollToTop);
+        window.onload = checkFooterVisibility;
+        window.addEventListener('scroll', onScroll);
+    </script>
+</body>
+</html>

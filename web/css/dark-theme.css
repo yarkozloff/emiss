@@ -1,0 +1,701 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+    text-decoration: none;
+    color: white;
+    background-color: #262626;
+    cursor: default;
+}
+label {
+    background-color: #191919;
+}
+li {
+    background-color: #191919;
+}
+ul {
+    background-color: #191919;
+}
+a:hover {
+    color: #45a049;
+}
+a:active {
+    color: #45a049;
+}
+#theme-toggle {
+    background-color: #262626;
+    color: white;
+    border: 1px white;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#theme-toggle:hover {
+    background-color: white;
+    color: #262626;
+    border: 1px #262626;
+}
+#card-toggle {
+    background-color: #262626;
+    color: white;
+    border: 1px white;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#card-toggle:hover {
+    background-color: white;
+    color: #262626;
+    border: 1px #262626;
+}
+.Main {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    position: relative; /* set position to relative */
+    z-index: 1; /* set z-index to 1 to bring it to the front */
+    background-color: #262626;
+
+}
+.menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: #ffffff;
+    margin: 4px 4px 2px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    width: 20%;
+    top: 40px;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-menu button {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-menu button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Новые стили для анимации */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: top left;
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0; /* Скрываем вторую полоску */
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+}
+
+.mainlogo {
+    width: 140px; 
+    height: 140px;
+    display: inline-block;
+    border: 1px solid white;
+    border-radius: 8px; /* Закругление углов (опционально) */
+    margin: 10px auto;
+    text-align: center;
+}
+h1 {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 1.5em;
+    text-align: center;
+    color: white;
+}
+.minifonts {
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+}
+.class-form {
+    background-color: #191919;
+    border-radius: 8px;
+    width: 90%;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    color: white;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+.class-controls {
+    justify-content: space-between;
+    width: 100%;
+    background-color: #191919;
+}
+#class-input {
+    border-radius: 8px;
+    background-color: #262626;
+    border: 1px solid hsla(0, 0%, 100%, .192);
+    color: white;
+    text-align: center;
+    margin: 10px 10px;
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 90%;
+}
+#results-class-list {
+    font-size: 0.7em;
+    text-align: left;
+}
+.class-button:hover {
+    color: #45a049;
+}
+.search-form {
+    background-color: #191919;
+    border-radius: 8px;
+    border: 1px white;
+    width: 90%;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    color: white;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+#search-input {
+    border-radius: 8px;
+    background-color: #262626;
+    border: 1px solid hsla(0, 0%, 100%, .192);
+    color: white;
+    text-align: center;
+    margin: 10px 10px;
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 90%;
+}
+.code-button:hover {
+    color: #45a049;
+}
+#results-codes-list {
+    font-size: 0.7em;
+    text-align: left;
+}
+#search-button:hover {
+    background-color: #45a049;
+}
+#search-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 30%;
+    margin: 10px 10px;
+}
+.search-controls {
+    justify-content: space-between;
+    width: 100%;
+    background-color: #191919;
+}
+#results-list {
+    list-style-type: none;
+    text-align: left;
+    width: 90%;
+}
+#search-results {
+    border-radius: 8px;
+    border: 1px white;
+    background-color: #191919;
+    width: 90%;
+    padding: 20px;
+    margin: 10px auto;
+    padding: 10px;
+    display: none;
+    text-align: left;
+    color: white;
+    align-items: center;
+    cursor: default;
+}
+.result-data {
+    flex: 1;
+    margin-right: 10px;
+}
+.result-block{
+    background-color: #191919;
+    padding-top: 1em;
+}
+.result-link {
+    background-color: #191919;
+}
+.results-length-count {
+    background-color: #191919;
+}
+.results-length-display {
+    background-color: #191919;
+}
+.additional-data {
+    padding: 10px 16px;
+}
+.fulltext-controls {
+    display: flex; 
+    justify-content: space-between;
+    background-color: #191919;
+}
+.fulltext-form {
+    background-color: #191919;
+    border-radius: 8px;
+    border: 1px white;
+    width: 90%;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    color: white;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+#fulltext-input {
+    border-radius: 8px;
+    border: 1px solid hsla(0, 0%, 100%, .192);
+    color: white;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+#fulltext-button:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+#fulltext-button {
+    background-color: #4CAF50; /* Зеленый цвет кнопки */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px 10px;
+    margin-right: 5%;
+}
+#submit-button:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+#submit-button {
+    background-color: #4CAF50; /* Зеленый цвет кнопки */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+.dataset-result {
+    border-radius: 8px;
+    background-color: #262626;
+    border: 1px solid hsla(0, 0%, 100%, .192);
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 0.7em;
+}
+.highlight {
+    color: #45a049;
+}
+.dataset-desc {
+    font-size: 0.7em;
+}
+#dataset-desc-button:hover {
+    color: #45a049;
+}
+.dataset-obs-buttom:hover {
+    color: #45a049;
+}
+        /* Стили для модального окна */
+.dataset-desc-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 80%; 
+    height: 60%; 
+    overflow: auto;
+    border-radius: 8px;
+    border: 2px solid #ffffff;
+    background-color: #191919;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+.dataset-desc-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%; 
+    position: relative;
+    background-color: #191919;
+}
+.dataset-desc-text {
+    background-color: #191919;
+}
+.dataset-desc-close {
+    position: absolute; /* Позиционирование относительно родителя */
+    top: 15px; /* Расстояние от верхнего края */
+    right: 15px; /* Расстояние от правого края */
+    width: 30px; /* Ширина кнопки */
+    height: 30px; /* Высота кнопки */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без границы */
+    cursor: pointer; /* Курсор при наведении */
+    outline: none; /* Убрать контур */
+}
+
+/* Стили для крестика */
+.dataset-cdv-header1 {
+    background-color: #191919;
+    margin: 1em;
+    text-align: center;
+}
+.dataset-cdv-header2 {
+    background-color: #191919;
+    margin: 1em;
+    text-align: center;
+}
+.dataset-desc-close::before,
+.dataset-desc-close::after {
+    content: ""; /* Пустое содержимое для псевдоэлементов */
+    position: absolute; /* Позиционирование относительно кнопки */
+    top: 50%; /* Центрируем по вертикали */
+    left: 50%; /* Центрируем по горизонтали */
+    width: var(--cross-size, 20px); /* Размер крестика (по умолчанию 20px) */
+    height: var(--cross-thickness, 4px); /* Толщина крестика (по умолчанию 4px) */
+    background-color: white; /* Цвет крестика */
+    transform: translate(-50%, -50%) rotate(45deg); /* Поворот для создания крестика */
+}
+
+/* Второй элемент крестика */
+.dataset-desc-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg); /* Поворот для создания второго элемента крестика */
+}
+
+/* Эффект при наведении */
+.dataset-desc-close::before,
+.dataset-desc-close::after {
+    background-color: rgba(255, 255, 255, 0.8); /* Изменение цвета при наведении */
+}
+.table-methodic {
+    text-align: center;
+    width: 50%;
+    background-color: #191919;
+}
+.dataset-obs-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    width: 80%; 
+    height: 80%; 
+    overflow: auto;
+    border-radius: 8px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+.dataset-obs-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%; 
+    position: relative;
+    background-color: #262626;
+    
+}
+#download-excel {
+    background-color: #262626;
+    line-height: 20px;
+    font-size: 1.2em;
+}
+#download-excel:hover {
+    background-color: #262626;
+    line-height: 20px;
+    font-size: 1.2em;
+    color: #45a049;
+}
+.content-header {
+    background-color: #262626;
+    padding: 10px;
+}
+canvas {
+    background-color: #262626;
+}
+
+[id^="legend-"] {
+    width: 90%;
+    height: 60vh;
+    margin: auto;
+}
+[id^="bar-"] {
+    width: 90%;
+    height: 60vh;
+    margin: auto;
+}
+[id^="radar-"] {
+    width: 90%;
+    margin: auto;
+}
+
+.dataset-obs-close {
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    width: 30px; 
+    height: 30px; 
+    background-color: transparent; 
+    border: none; 
+    cursor: pointer; 
+    outline: none; 
+}
+
+.dataset-obs-close::before,
+.dataset-obs-close::after {
+    content: ""; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    width: var(--cross-size, 20px); 
+    height: var(--cross-thickness, 4px); 
+    background-color: white; 
+    transform: translate(-50%, -50%) rotate(45deg); 
+}
+
+.dataset-obs-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg); 
+}
+
+.dataset-obs-close::before,
+.dataset-obs-close::after {
+    background-color: rgba(255, 255, 255, 0.8); 
+}
+
+.tab {
+    background-color: #262626;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #191919;
+}
+
+#tabs {
+    text-align: center;
+    background-color: #262626;
+}
+
+#content {
+    background-color: #262626;
+    margin: auto;
+    font-size: 1em;
+    height: 50vw; /* Заполняем всю высоту родителя */
+    overflow-y: auto; /* Вертикальный скроллинг */
+    overflow-x: auto; /* Горизонтальный скроллинг */
+    width: 100%; /* Заполняем всю ширину родителя */
+    box-sizing: border-box; /* Учитываем отступы и границы в ширине и высоте */
+}
+
+#content.active {
+    display: block;
+}
+
+table {
+    border-collapse: collapse; 
+    background-color: #262626;
+    width: 100%;
+}
+tbody {
+    background-color: #262626;
+}
+td {
+    border: 1px solid #ccc;
+    padding: 8px; 
+    text-align: left;
+    background-color: #262626;
+}
+th {
+    border: 1px solid #ccc;
+    padding: 8px; 
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #262626;
+}
+td:first-child, th:first-child {
+    background-color: #262626;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+        /* Стили для модального окна схемы*/
+.schema-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 10%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    width: 80%; 
+    height: 90%; 
+    overflow: auto;
+    border-radius: 8px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+.schema-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%; 
+    position: relative;
+    background-color: #191919;
+}
+.schema-text {
+    background-color: #e0e0e0;
+}
+.diag-001 {
+    content: url('../img/dark_diag_001.svg');
+}
+.diag-002 {
+    content: url('../img/dark_diag_002.svg');
+}
+.diag-003 {
+    content: url('../img/dark_diag_003.svg');
+}
+.diag-004 {
+    content: url('../img/dark_diag_004.svg');
+}
+.schema-text {
+    background-color: #191919;
+}
+.schema-close {
+    position: absolute; /* Позиционирование относительно родителя */
+    top: 15px; /* Расстояние от верхнего края */
+    right: 15px; /* Расстояние от правого края */
+    width: 30px; /* Ширина кнопки */
+    height: 30px; /* Высота кнопки */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без границы */
+    cursor: pointer; /* Курсор при наведении */
+    outline: none; /* Убрать контур */
+}
+
+/* Стили для крестика */
+.schema-header1 {
+    background-color: #191919;
+    margin: 1em;
+    text-align: center;
+}
+.schema-close::before,
+.schema-close::after {
+    content: ""; /* Пустое содержимое для псевдоэлементов */
+    position: absolute; /* Позиционирование относительно кнопки */
+    top: 50%; /* Центрируем по вертикали */
+    left: 50%; /* Центрируем по горизонтали */
+    width: var(--cross-size, 20px); /* Размер крестика (по умолчанию 20px) */
+    height: var(--cross-thickness, 4px); /* Толщина крестика (по умолчанию 4px) */
+    background-color: white; /* Цвет крестика */
+    transform: translate(-50%, -50%) rotate(45deg); /* Поворот для создания крестика */
+}
+
+/* Второй элемент крестика */
+.schema-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg); /* Поворот для создания второго элемента крестика */
+}
+
+/* Эффект при наведении */
+.schema-close::before,
+.schema-close::after {
+    background-color: rgba(255, 255, 255, 0.8); /* Изменение цвета при наведении */
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #191919d2;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    display: none; /* Скрыт по умолчанию */
+    z-index: 100;
+}
+footer:hover {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #191919d2;
+    color: #45a049;
+    text-align: center;
+    padding: 10px;
+    display: none; /* Скрыт по умолчанию */
+    z-index: 100;
+}

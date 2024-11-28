@@ -1,0 +1,698 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+    text-decoration: none;
+    color: #4d4d4d;
+    background-color: #f7f9fb;
+    cursor: default;
+}
+label {
+    background-color: #e0e0e0;
+}
+li {
+    background-color: #e0e0e0;
+}
+ul {
+    background-color: #e0e0e0;
+}
+a:hover {
+    color: #45a049;
+}
+a:active {
+    color: #45a049;
+}
+#theme-toggle {
+    background-color: #f7f9fb;
+    color: #4d4d4d;
+    border: 1px #4d4d4d;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#theme-toggle:hover {
+    background-color: #4d4d4d;
+    color: #f7f9fb;
+    border: 1px #f7f9fb;
+}
+#card-toggle {
+    background-color: #f7f9fb;
+    color: #4d4d4d;
+    border: 1px #4d4d4d;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#card-toggle:hover {
+    background-color: #4d4d4d;
+    color: #f7f9fb;
+    border: 1px #f7f9fb;
+}
+.Main {
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    position: relative; /* set position to relative */
+    z-index: 1; /* set z-index to 1 to bring it to the front */
+    background-color: #f7f9fb;
+
+}
+.menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+}
+
+.bar {
+    width: 30px;
+    height: 4px;
+    background-color: #4d4d4d;
+    margin: 4px 4px 2px;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    width: 20%;
+    top: 40px;
+    left: 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-menu button {
+    background: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.dropdown-menu button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Новые стили для анимации */
+.menu-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg);
+    transform-origin: top left;
+}
+
+.menu-toggle.active .bar:nth-child(2) {
+    opacity: 0; /* Скрываем вторую полоску */
+}
+
+.menu-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg);
+    transform-origin: bottom left;
+}
+
+.mainlogo {
+    width: 140px; 
+    height: 140px;
+    display: inline-block;
+    border: 1px solid #4d4d4d;
+    border-radius: 8px; /* Закругление углов (опционально) */
+    margin: 10px auto;
+    text-align: center;
+}
+h1 {
+    margin-top: 5px;
+    margin-bottom: 2px;
+    font-size: 1.5em;
+    text-align: center;
+    color: #4d4d4d;
+}
+.minifonts {
+    font-size: 16px;
+    color: #4d4d4d;
+    text-align: center;
+}
+.class-form {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    width: 90%;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    color: #4d4d4d;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+.class-controls {
+    justify-content: space-between;
+    width: 100%;
+    background-color: #e0e0e0;
+}
+#class-input {
+    border-radius: 8px;
+    background-color: #f7f9fb;
+    border: 1px solid hsla(0, 0%, 100%, .192);
+    color: #4d4d4d;
+    text-align: center;
+    margin: 10px 10px;
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 90%;
+}
+#results-class-list {
+    font-size: 0.7em;
+    text-align: left;
+}
+.class-button:hover {
+    color: #45a049;
+}
+.search-form {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    border: 1px #4d4d4d;
+    width: 90%;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    color: #4d4d4d;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+#search-input {
+    border-radius: 8px;
+    background-color: #f7f9fb;
+    border: 1px solid hsla(0, 0%, 100%, .192);
+    color: #4d4d4d;
+    text-align: center;
+    margin: 10px 10px;
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 90%;
+}
+.code-button:hover {
+    color: #45a049;
+}
+#results-codes-list {
+    font-size: 0.7em;
+    text-align: left;
+}
+#search-button:hover {
+    background-color: #45a049;
+}
+#search-button {
+    background-color: #4CAF50;
+    color: #4d4d4d;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 30%;
+    margin: 10px 10px;
+}
+.search-controls {
+    justify-content: space-between;
+    width: 100%;
+    background-color: #e0e0e0;
+}
+#results-list {
+    list-style-type: none;
+    text-align: left;
+    width: 90%;
+}
+#search-results {
+    border-radius: 8px;
+    border: 1px #4d4d4d;
+    background-color: #e0e0e0;
+    width: 90%;
+    padding: 20px;
+    margin: 10px auto;
+    padding: 10px;
+    display: none;
+    text-align: left;
+    color: #4d4d4d;
+    align-items: center;
+    cursor: default;
+}
+.result-data {
+    flex: 1;
+    margin-right: 10px;
+}
+.result-block{
+    background-color: #e0e0e0;
+    padding-top: 1em;
+}
+.result-link {
+    background-color: #e0e0e0;
+}
+.results-length-count {
+    background-color: #e0e0e0;
+}
+.results-length-display {
+    background-color: #e0e0e0;
+}
+.additional-data {
+    padding: 10px 16px;
+}
+.fulltext-controls {
+    display: flex; 
+    justify-content: space-between;
+    background-color: #e0e0e0;
+}
+.fulltext-form {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    border: 1px #4d4d4d;
+    width: 90%;
+    padding: 20px;
+    margin: 10px auto;
+    text-align: center;
+    color: #4d4d4d;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+#fulltext-input {
+    border-radius: 8px;
+    border: 1px solid hsla(0, 0%, 100%, .192);
+    color: #4d4d4d;
+    text-align: center;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    flex: 1;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+}
+#fulltext-button:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+#fulltext-button {
+    background-color: #4CAF50; /* Зеленый цвет кнопки */
+    color: #f7f9fb;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 10px 10px;
+    margin-right: 5%;
+}
+#submit-button:hover {
+    background-color: #45a049; /* Темно-зеленый цвет при наведении */
+}
+#submit-button {
+    background-color: #4CAF50; /* Зеленый цвет кнопки */
+    color: #f7f9fb;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+.dataset-result {
+    border-radius: 8px;
+    background-color: #f7f9fb;
+    border: 1px solid hsla(0, 0%, 100%, .192);
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    color: #4d4d4d;
+    margin-bottom: 10px;
+    font-size: 0.7em;
+}
+.highlight {
+    color: #45a049;
+}
+.dataset-desc {
+    font-size: 0.7em;
+}
+#dataset-desc-button:hover {
+    color: #45a049;
+}
+.dataset-obs-buttom:hover {
+    color: #45a049;
+}
+        /* Стили для модального окна */
+.dataset-desc-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    width: 80%; 
+    height: 60%; 
+    overflow: auto;
+    border-radius: 8px;
+    border: 2px solid #4d4d4d;
+    background-color: #f7f9fb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+.dataset-desc-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%; 
+    position: relative;
+    background-color: #f7f9fb;
+}
+.dataset-desc-text {
+    background-color: #f7f9fb;
+}
+.dataset-desc-close {
+    position: absolute; /* Позиционирование относительно родителя */
+    top: 15px; /* Расстояние от верхнего края */
+    right: 15px; /* Расстояние от правого края */
+    width: 30px; /* Ширина кнопки */
+    height: 30px; /* Высота кнопки */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без границы */
+    cursor: pointer; /* Курсор при наведении */
+    outline: none; /* Убрать контур */
+}
+
+/* Стили для крестика */
+.dataset-cdv-header1 {
+    background-color: #f7f9fb;
+    margin: 1em;
+    text-align: center;
+}
+.dataset-cdv-header2 {
+    background-color: #f7f9fb;
+    margin: 1em;
+    text-align: center;
+}
+.dataset-desc-close::before,
+.dataset-desc-close::after {
+    content: ""; /* Пустое содержимое для псевдоэлементов */
+    position: absolute; /* Позиционирование относительно кнопки */
+    top: 50%; /* Центрируем по вертикали */
+    left: 50%; /* Центрируем по горизонтали */
+    width: var(--cross-size, 20px); /* Размер крестика (по умолчанию 20px) */
+    height: var(--cross-thickness, 4px); /* Толщина крестика (по умолчанию 4px) */
+    background-color: #4d4d4d; /* Цвет крестика */
+    transform: translate(-50%, -50%) rotate(45deg); /* Поворот для создания крестика */
+}
+
+/* Второй элемент крестика */
+.dataset-desc-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    background-color: #4d4d4d;
+}
+
+/* Эффект при наведении */
+.dataset-desc-close::before,
+.dataset-desc-close::after {
+    background-color: #4d4d4d;
+}
+.table-methodic {
+    text-align: center;
+    width: 50%;
+    background-color: #e0e0e0;
+}
+.dataset-obs-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    width: 80%; 
+    height: 80%; 
+    overflow: auto;
+    border-radius: 8px;
+    border: 2px solid #4d4d4d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+
+.dataset-obs-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%; 
+    position: relative;
+    background-color: #f7f9fb;
+    
+}
+#download-excel {
+    background-color: #f7f9fb;
+    line-height: 20px;
+    font-size: 1.2em;
+}
+#download-excel:hover {
+    background-color: #f7f9fb;
+    line-height: 20px;
+    font-size: 1.2em;
+    color: #45a049;
+}
+.content-header {
+    background-color: #f7f9fb;
+    padding: 10px;
+}
+canvas {
+    background-color: #f7f9fb;
+}
+
+[id^="legend-"] {
+    width: 90%;
+    height: 60vh;
+    margin: auto;
+}
+[id^="bar-"] {
+    width: 90%;
+    height: 60vh;
+    margin: auto;
+}
+[id^="radar-"] {
+    width: 90%;
+    margin: auto;
+}
+
+.dataset-obs-close {
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    width: 30px; 
+    height: 30px; 
+    border: none; 
+    cursor: pointer; 
+    outline: none;
+}
+
+.dataset-obs-close::before,
+.dataset-obs-close::after {
+    content: ""; 
+    position: absolute; 
+    top: 50%; 
+    left: 50%; 
+    width: var(--cross-size, 20px); 
+    height: var(--cross-thickness, 4px); 
+    transform: translate(-50%, -50%) rotate(45deg); 
+}
+
+.dataset-obs-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg); 
+}
+
+.dataset-obs-close::before,
+.dataset-obs-close::after {
+    background-color: #4d4d4d;
+}
+
+.tab {
+    background-color: #f7f9fb;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.tab.active {
+    background-color: #e0e0e0;
+}
+
+#tabs {
+    text-align: center;
+    background-color: #f7f9fb;
+}
+
+#content {
+    background-color: #f7f9fb;
+    margin: auto;
+    font-size: 1em;
+    height: 50vw; /* Заполняем всю высоту родителя */
+    overflow-y: auto; /* Вертикальный скроллинг */
+    overflow-x: auto; /* Горизонтальный скроллинг */
+    width: 100%; /* Заполняем всю ширину родителя */
+    box-sizing: border-box; /* Учитываем отступы и границы в ширине и высоте */
+}
+
+#content.active {
+    display: block;
+}
+
+table {
+    border-collapse: collapse; 
+    background-color: #e0e0e0;
+    width: 100%;
+}
+tbody {
+    background-color: #f7f9fb;
+}
+td {
+    border: 1px solid #ccc;
+    padding: 8px; 
+    text-align: left;
+    background-color: #f7f9fb;
+}
+th {
+    border: 1px solid #ccc;
+    padding: 8px; 
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #f7f9fb;
+}
+td:first-child, th:first-child {
+    background-color: #f7f9fb;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+        /* Стили для модального окна схемы*/
+.schema-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    top: 0;
+    left: 10%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    width: 80%; 
+    height: 90%; 
+    overflow: auto;
+    border-radius: 8px;
+    border: 2px solid #4d4d4d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Добавляем тень */
+}
+.schema-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%; 
+    position: relative;
+    background-color: #f7f9fb;
+}
+.schema-text {
+    background-color: #e0e0e0;
+}
+.diag-001 {
+    content: url('../img/light_diag_001.svg');
+}
+.diag-002 {
+    content: url('../img/light_diag_002.svg');
+}
+.diag-003 {
+    content: url('../img/light_diag_003.svg');
+}
+.diag-004 {
+    content: url('../img/light_diag_004.svg');
+}
+.schema-close {
+    position: absolute; /* Позиционирование относительно родителя */
+    top: 15px; /* Расстояние от верхнего края */
+    right: 15px; /* Расстояние от правого края */
+    width: 30px; /* Ширина кнопки */
+    height: 30px; /* Высота кнопки */
+    background-color: transparent; /* Прозрачный фон */
+    border: none; /* Без границы */
+    cursor: pointer; /* Курсор при наведении */
+    outline: none; /* Убрать контур */
+}
+
+/* Стили для крестика */
+.schema-header1 {
+    background-color: #f7f9fb;
+    margin: 1em;
+    text-align: center;
+}
+.schema-close::before,
+.schema-close::after {
+    content: ""; /* Пустое содержимое для псевдоэлементов */
+    position: absolute; /* Позиционирование относительно кнопки */
+    top: 50%; /* Центрируем по вертикали */
+    left: 50%; /* Центрируем по горизонтали */
+    width: var(--cross-size, 20px); /* Размер крестика (по умолчанию 20px) */
+    height: var(--cross-thickness, 4px); /* Толщина крестика (по умолчанию 4px) */
+    background-color: #4d4d4d; /* Цвет крестика */
+    transform: translate(-50%, -50%) rotate(45deg); /* Поворот для создания крестика */
+}
+
+/* Второй элемент крестика */
+.schema-close::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+    background-color: #4d4d4d;
+}
+
+/* Эффект при наведении */
+.schema-close::before,
+.schema-close::after {
+    background-color: #4d4d4d;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #e0e0e0d2;
+    color: #4d4d4d;
+    text-align: center;
+    padding: 10px;
+    display: none; /* Скрыт по умолчанию */
+    z-index: 100;
+}
+footer:hover {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #e0e0e0d2;
+    color: #45a049;
+    text-align: center;
+    padding: 10px;
+    display: none; /* Скрыт по умолчанию */
+    z-index: 100;
+}
