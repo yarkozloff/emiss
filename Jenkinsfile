@@ -29,7 +29,7 @@ pipeline {
                             -e DB_NAME=russtat \
                             -e DB_PASSWORD=postgres \
                             -e DB_PORT=5432 \
-                            yaremiss-api
+                            emiss-api
                     """
                 }
             }
