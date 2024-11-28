@@ -4,7 +4,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Клонируем репозиторий
-                git 'https://github.com/your/repository.git'
+                git 'https://github.com/yarkozloff/emiss.git'
             }
         }
         stage('1 Build emiss-api') {
