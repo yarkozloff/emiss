@@ -1,0 +1,7 @@
+version: '3.9'
+
+services:
+  yarkozloff-emiss-web:
+    image: yarkozloff-emiss-web
+    ports:
+      - 8080:80

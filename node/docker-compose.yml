@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  node:
+    container_name: yarkozloff-emiss-api
+    image: yarkozloff-emiss-api
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - DB_USER=postgres
+      - DB_HOST=host.docker.internal
+      - DB_NAME=russtat
+      - DB_PASSWORD=postgres
+      - DB_PORT=5432
