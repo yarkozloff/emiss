@@ -102,8 +102,15 @@ web
 Для автоматизации сборки и развертывания приложения (api и web) решил использовать Jenkins (развернутый локально в докере на моей машине) и вебхуки GitHub.
 То есть после получении нового коммита GitHub отправляет уведомление (вебхук) на URL Jenkins и запускается пайплайн, включающий в себя клонирование репозитория, остановку работающих контейнеров, удаление действующих образов, сборку новых docker-образов, запуск обновленных контейнеров через docker-compose.
 На текущий момент пайплайн дописывается.
+...
+...
 
-
-
-
-
+## 6. Скриншоты
+![001](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/001.png)
+![002](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/002.png)
+![003](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/003.png)
+![004](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/004.png)
+![005](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/005.png)
+![006](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/006.png)
+![007](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/007.png)
+![008](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/008.png)
