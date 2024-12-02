@@ -56,17 +56,29 @@ convert_to_date - преобразует дату в DD.MM.YYYY
 Структура файлов получилась следующей:
 node
 ├── Dockerfile
+
 ├── controllers
+
 │   └── searchController.js
+
 ├── docker-compose.yml
+
 ├── models
+
 │   └── db.js
+
 ├── node_modules...  
+
 ├── package-lock.json
+
 ├── package.json
+
 ├── routes
+
 │   └── api.js
+
 └── server.js
+
 + server.js - Перечень модулей, порта, маршрутов
 + api.js - Определения маршрутов
 + package.json - Версии модулей
