@@ -106,11 +106,26 @@ web
 ...
 
 ## 6. Скриншоты
+Модальное окно схемы данны:
 ![001](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/001.png)
+
+Список рубрик от ведомств:
 ![002](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/002.png)
+
+Поиски по тематикам (от 3 символов) и полнотекстовый поиск:
 ![003](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/003.png)
+
+Смена темы и новый полнотекстовый поиск:
 ![004](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/004.png)
+
+Модальное окно с показателем - Таблица (Светлая тема):
 ![005](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/005.png)
+
+Модальное окно с показателем - График Line (Темная тема):
 ![006](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/006.png)
+
+Модальное окно с показателем - График Bar (Темная тема):
 ![007](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/007.png)
+
+Модальное окно с показателем - График Radar (Светлая тема):
 ![008](https://raw.githubusercontent.com/yarkozloff/emiss/refs/heads/main/screenshots/008.png)
