@@ -1,7 +1,8 @@
-version: '3.9'
+version: '3.7'
 
 services:
-  yarkozloff-emiss-web:
-    image: yarkozloff-emiss-web
+  emiss-web:
+    container_name: emiss-web
+    image: emiss-web
     ports:
-      - 88:80
+      - 80:80

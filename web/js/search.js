@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const query = event.target.value;
         if (query.length >= 3) {
             try {
-                const response = await fetch('http://localhost:3000/api/search-classifier', {
+                const response = await fetch('https://api.yarkozloff.keenetic.link/api/search-classifier', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.classList.contains('class-button')) {
             const classid = event.target.getAttribute('classid');
             try {
-                const response = await fetch('http://localhost:3000/api/search-by-class', {
+                const response = await fetch('https://api.yarkozloff.keenetic.link/api/search-by-class', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const query = event.target.value;
         if (query.length >= 3) {
             try {
-                const response = await fetch('http://localhost:3000/api/search-codes', {
+                const response = await fetch('https://api.yarkozloff.keenetic.link/api/search-codes', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target.classList.contains('code-button')) {
             const codeid = event.target.getAttribute('codeid');
             try {
-                const response = await fetch('http://localhost:3000/api/search-by-codes', {
+                const response = await fetch('https://api.yarkozloff.keenetic.link/api/search-by-codes', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const modifiedQuery = query.replace(/\sили\s/g, '|').replace(/\s+/g, '&');
     
         try {
-            const response = await fetch('http://localhost:3000/api/search-by-fulltext', {
+            const response = await fetch('https://api.yarkozloff.keenetic.link/api/search-by-fulltext', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const codeId = itemDescButton.getAttribute('cdv-code-id');
                     const datasetId = itemDescButton.getAttribute('cdv-dataset-id');
                     try {
-                        const response = await fetch('http://localhost:3000/api/get-methodic', {
+                        const response = await fetch('https://api.yarkozloff.keenetic.link/api/get-methodic', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
@@ -489,7 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             try {
-                const response = await fetch('http://localhost:3000/api/get-obs', {
+                const response = await fetch('https://api.yarkozloff.keenetic.link/api/get-obs', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -528,24 +528,19 @@ document.addEventListener('DOMContentLoaded', () => {
             "Единица": item.name_obs,
             "Значение": item.val_obs
         }));
-        console.log(formattedData);
         const contentHeader = dataset_name;
-        console.log(contentHeader);
         let fileName = 'данные.xlsx'; // Значение по умолчанию
     
         if (contentHeader) {
             
             // Удаляем знаки препинания и разбиваем строку на слова
             const words = contentHeader.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").split(/\s+/);
-            console.log(words);
             
             // Получаем первые 5 слов
             const firstFiveWords = words.slice(0, 5).join(' ');
-            console.log(firstFiveWords);
             
             // Формируем имя файла
             fileName = firstFiveWords + '.xlsx';
-            console.log(fileName);
         }
     
         const wb = XLSX.utils.book_new();
@@ -850,6 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return color;
     }
 
+    // Модальное окно с схемой данных
     document.getElementById('card-toggle').addEventListener('click', async (event) => {
         event.preventDefault();
         try {
@@ -946,7 +942,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         initializeSchemaTabs();
     });
-
     // Функция переключения вкладок в схеме данных
     function initializeSchemaTabs() {
         const activeModal = document.querySelector('.schema-modal[style*="display: block;"]');
@@ -970,7 +965,186 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       }
-      
-});
 
-    
+      // Модальное окно Авторские права
+    document.getElementById('lic-toggle').addEventListener('click', async (event) => {
+        event.preventDefault();
+        try {
+            const mainBody = document.getElementsByClassName("Main")[0]; // Получаем первый элемент с классом Main
+            const itemLicModal = document.createElement('div');
+            itemLicModal.classList.add('lic-modal');
+            itemLicModal.setAttribute('id', 'lic-modal');
+            const itemLicContent = document.createElement('div');
+            itemLicContent.classList.add('lic-content');
+            itemLicContent.setAttribute('id', 'lic-content');
+            const itemLicClose = document.createElement('span');
+            itemLicClose.classList.add('lic-close');
+            itemLicClose.addEventListener('click', () => {
+                itemLicModal.remove();
+            });
+            const itemSchemaH1 = document.createElement('h2');
+            itemSchemaH1.classList.add('lic-header1');
+            itemSchemaH1.textContent = 'Лицензия и авторские права';
+
+            // Блок с контентом
+            const itemLicText = document.createElement('div');
+            itemLicText.classList.add('lic-text');
+            itemLicText.innerHTML = `
+Все исходные данные взяты с сайта ЕМИСС по адресу <a href="https://fedstat.ru/" target="_blank">https://fedstat.ru/</a>. Никакие данные не модифицируются данным приложением.<br><br>
+
+Сайт ЕМИСС публикует все материалы на условиях лицензии <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">Creative Common Attribution 3.0</a>. Правообладателями являются Федеральная служба государственной статистики (РОССТАТ) и Министерство цифрового развития, связи и массовых коммуникаций Российской Федерации (МИНКОМСВЯЗЬ).
+`;
+
+            itemLicContent.appendChild(itemSchemaH1);
+            itemLicContent.appendChild(itemLicClose);
+            itemLicContent.appendChild(itemLicText);
+            itemLicModal.appendChild(itemLicContent);
+            mainBody.appendChild(itemLicModal);
+            itemLicModal.style.display = 'block';
+        } catch (error) {
+            console.error('Ошибка при получении данных:', error);
+        }
+        initializeSchemaTabs();
+    });
+
+    // поиск рубрики
+    document.getElementById('class-toggle').addEventListener('click', async (event) => {
+        try {
+            const response = await fetch('https://api.yarkozloff.keenetic.link/api/class-list', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Ошибка при выполнении поиска');
+            }
+            const data = await response.json();
+            console.log(data);
+            const mainBody = document.getElementsByClassName("Main")[0]; // Получаем первый элемент с классом Main
+            const itemClassModal = document.createElement('div');
+            itemClassModal.classList.add('class-modal');
+            itemClassModal.setAttribute('id', 'class-modal');
+            const itemClassContent = document.createElement('div');
+            itemClassContent.classList.add('class-content');
+            itemClassContent.setAttribute('id', 'class-content');
+            const itemClassClose = document.createElement('span');
+            itemClassClose.classList.add('class-close');
+            itemClassClose.addEventListener('click', () => {
+                itemClassModal.remove();
+            });
+            const itemClassH1 = document.createElement('h2');
+            itemClassH1.classList.add('class-header1');
+            itemClassH1.textContent = 'Список рубрик от источников';
+            const itemLicText = document.createElement('div');
+            itemLicText.classList.add('class-text');
+            // Функция для сортировки массива
+            // Функция для сортировки массива
+            function sortResults(results) {
+                return results.sort((a, b) => {
+                    if (a.col1 < b.col1) return -1;
+                    if (a.col1 > b.col1) return 1;
+                    return 0;
+                });
+            }
+            
+            // Функция для группировки данных
+            function groupResults(results) {
+                const grouped = {};
+            
+                results.forEach(item => {
+                    const key1 = item.col1 || 'Без названия';
+                    const key2 = item.col2 || 'Без названия';
+                    const key3 = item.col3 || 'Без данных';
+                    const key4 = item.col4 || 'Без данных';
+                    const key5 = item.col5 || 'Без данных';
+            
+                    if (!grouped[key1]) {
+                        grouped[key1] = {};
+                    }
+                    if (!grouped[key1][key2]) {
+                        grouped[key1][key2] = {};
+                    }
+                    if (key3 !== 'Без данных') {
+                        grouped[key1][key2][key3] = {};
+                    }
+                    if (key4 !== 'Без данных') {
+                        grouped[key1][key2][key3][key4] = {};
+                    }
+                    if (key5 !== 'Без данных') {
+                        grouped[key1][key2][key3][key4][key5] = {};
+                    }
+                });
+            
+                return grouped;
+            }
+            
+            // Рекурсивная функция для создания вложенных списков
+            function createNestedList(groupedData) {
+                const ul = document.createElement('ul');
+                ul.classList.add('ul-class-list');
+            
+                for (const key1 in groupedData) {
+                    const li1 = document.createElement('li');
+                    li1.textContent = key1; // Название группы по col1
+                    li1.classList.add('li-class-list');
+            
+                    const nestedUl1 = createNestedList(groupedData[key1]); // Вложенный список для col2
+                    li1.appendChild(nestedUl1); // Добавляем вложенный список в li1
+            
+                    // Изменяем класс родительского элемента, если у него есть дочерние элементы
+                    if (nestedUl1.children.length > 0) {
+                        li1.classList.add('has-children'); // Класс для родительского элемента с дочерними
+                    } else {
+                        li1.classList.add('no-children'); // Класс для родительского элемента без дочерних
+                    }
+            
+                    ul.appendChild(li1); // Добавляем li1 в основной список
+                }
+            
+                return ul;
+            }
+            
+            // Сортируем и группируем данные
+            const sortedResults = sortResults(data.results);
+            const groupedResults = groupResults(sortedResults);
+            
+            // Создаем список
+            const list = createNestedList(groupedResults);
+            
+            // Добавляем список в документ
+            document.body.appendChild(list);
+            
+            // Добавляем обработчик клика для раскрытия/сокрытия вложенных списков
+            function addToggleListeners(ul) {
+                ul.querySelectorAll('li').forEach(item => {
+                    const nestedUl = item.querySelector('ul');
+                    if (nestedUl) {
+                        item.style.cursor = 'pointer'; // Указатель для клика
+                        item.addEventListener('click', (event) => {
+                            event.stopPropagation(); // Останавливаем всплытие события
+                            nestedUl.style.display = nestedUl.style.display === 'none' ? 'block' : 'none';
+                        });
+                        nestedUl.style.display = 'none'; // Скрываем вложенные списки по умолчанию
+                    }
+                });
+            }
+            
+            // Инициализируем обработчики кликов
+            addToggleListeners(list);
+            document.body.appendChild(list);
+            
+            itemLicText.appendChild(list);
+            
+            itemClassContent.appendChild(itemClassH1);
+            itemClassContent.appendChild(itemClassClose);
+            itemClassContent.appendChild(itemLicText);
+            itemClassModal.appendChild(itemClassContent);
+            mainBody.appendChild(itemClassModal);
+            itemClassModal.style.display = 'block';
+        } catch (error) {
+            console.error('Ошибка:', error);
+            alert('Произошла ошибка при выполнении поиска.');
+        }
+    });
+});

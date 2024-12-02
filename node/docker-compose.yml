@@ -1,8 +1,8 @@
-version: '3.8'
+version: '3.7'
 services:
   node:
-    container_name: yarkozloff-emiss-api
-    image: yarkozloff-emiss-api
+    container_name: emiss-api
+    image: emiss-api
     ports:
       - "3000:3000"
     volumes:

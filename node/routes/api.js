@@ -11,5 +11,6 @@ router.post('/search-classifier', searchController.searchClassifier);
 router.post('/search-codes', searchController.searchCodes);
 router.post('/get-methodic', searchController.getMethodic);
 router.post('/get-obs', searchController.getObs);
+router.post('/class-list', searchController.classList);
 
 module.exports = router;

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>My Search Project</title>
+    <title>Новый ЕМИСС</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link id="theme-stylesheet" rel="stylesheet" href="css/dark-theme.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/search.js"></script>
@@ -21,39 +22,47 @@
             <button id="theme-toggle">Сменить тему</button>
             <script src="js/change_theme.js"></script></div>
             <div>
-                <button id="card-toggle">Схема данных</button></div>
+                <button id="card-toggle">Схема данных</button>
+            </div>
+            <div>
+                <button id="class-toggle">Список рубрик</button>
+            </div>
+            <div>
+                <button id="lic-toggle">Авторские права</button>
+            </div>
         </div>
     </div>
     <div class="Main">
         
         <script>
-            // JavaScript для управления выпадающим меню
+            // Для закрытия вкладок в меню
             const menuToggle = document.getElementById('menu-toggle');
             const dropdownMenu = document.getElementById('dropdown-menu');
-            const cardToggle = document.getElementById('card-toggle'); // Получаем элемент card-toggle
-        
+            const cardToggle = document.getElementById('card-toggle');
+            const licToggle = document.getElementById('lic-toggle');
+            const themeToggle = document.getElementById('theme-toggle');
+            const classToggle = document.getElementById('class-toggle');
             menuToggle.addEventListener('click', (event) => {
-                event.stopPropagation(); // Останавливаем всплытие события, чтобы клик по menuToggle не срабатывал на document
+                event.stopPropagation();
                 dropdownMenu.classList.toggle('active');
-                menuToggle.classList.toggle('active'); // Добавляем класс active к menu-toggle
+                menuToggle.classList.toggle('active');
             });
-        
-            // Обработчик клика по документу
             document.addEventListener('click', (event) => {
-                // Проверяем, находится ли клик вне dropdownMenu и menuToggle
                 if (!dropdownMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-                    dropdownMenu.classList.remove('active'); // Убираем класс active у dropdownMenu
-                    menuToggle.classList.remove('active'); // Убираем класс active у menuToggle
+                    dropdownMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
                 }
             });
-        
-            // Обработчик клика по card-toggle
-            cardToggle.addEventListener('click', (event) => {
-                event.stopPropagation(); // Останавливаем всплытие события
-                dropdownMenu.classList.remove('active'); // Убираем класс active у dropdownMenu
-                menuToggle.classList.remove('active'); // Убираем класс active у menuToggle
-            });
-        
+            const handleToggleClick = (event) => {
+                event.stopPropagation();
+                dropdownMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            };
+            cardToggle.addEventListener('click', handleToggleClick);
+            licToggle.addEventListener('click', handleToggleClick);
+            themeToggle.addEventListener('click', handleToggleClick);
+            classToggle.addEventListener('click', handleToggleClick);
+
         </script>
         
         <!-- Заголовок -->

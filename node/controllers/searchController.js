@@ -196,3 +196,24 @@ exports.getObs = async (req, res) => {
     res.status(500).send('Ошибка при выполнении поиска search');
   }
 };
+
+// Эндпоинт для поиска рубрики
+exports.classList = async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT
+      (string_to_array(name, ' / '))[2] AS col1,
+      (string_to_array(name, ' / '))[3] AS col2,
+      (string_to_array(name, ' / '))[4] AS col3,
+      (string_to_array(name, ' / '))[5] AS col4,
+      (string_to_array(name, ' / '))[6] AS col5
+      FROM classifier
+      WHERE id != 1;
+    `);
+    res.json({ results: result.rows });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Ошибка при выполнении поиска');
+  }
+};
+
